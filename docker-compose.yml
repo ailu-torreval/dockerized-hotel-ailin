@@ -1,0 +1,18 @@
+version: "3"
+services:
+  api:
+    build: ./hotel-api
+    ports:
+      - "4200:4200"
+    depends_on:
+      - mongodb
+  client:
+    build: ./hotel-client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
